@@ -4,7 +4,7 @@ from sklearn.naive_bayes import MultinomialNB
 import pickle
 import os
 
-# Simple keyword-based categorization
+
 CATEGORY_KEYWORDS = {
     'groceries': ['grocery', 'food', 'supermarket', 'market', 'store', 'milk', 'bread', 'vegetables', 'fruit'],
     'travel': ['flight', 'hotel', 'bus', 'train', 'taxi', 'uber', 'lyft', 'gas', 'fuel', 'trip', 'vacation'],
@@ -24,7 +24,7 @@ def categorize_expense(description):
                 return category
     return 'other'
 
-# Simple ML-based categorization (train on sample data)
+
 MODEL_FILE = 'expense_classifier.pkl'
 VECTORIZER_FILE = 'tfidf_vectorizer.pkl'
 
@@ -38,7 +38,7 @@ def train_classifier(sample_data):
     clf = MultinomialNB()
     clf.fit(X, categories)
 
-    # Save model and vectorizer
+  
     with open(MODEL_FILE, 'wb') as f:
         pickle.dump(clf, f)
     with open(VECTORIZER_FILE, 'wb') as f:
@@ -63,7 +63,8 @@ def ml_categorize_expense(description):
     else:
         return categorize_expense(description)
 
-# For demo, use keyword-based; can train ML later
+
 def auto_categorize(description):
     """Auto-categorize expense description."""
     return ml_categorize_expense(description)
+
