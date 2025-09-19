@@ -6,10 +6,10 @@ from categorization import auto_categorize
 from visualization import plot_pie_chart, plot_monthly_trends, get_image_base64
 from utils import check_budget_alerts, split_bill, generate_ai_insights, filter_expenses, export_to_csv
 
-# Initialize database
+
 init_db()
 
-# Function to add sample data
+
 def add_sample_data():
     sample_expenses = [
         ('2023-10-01', 50.0, 'Grocery shopping at supermarket', 'groceries'),
@@ -28,10 +28,10 @@ def add_sample_data():
 
 st.title("Smart Expense Manager")
 
-# Sidebar for navigation
+
 page = st.sidebar.selectbox("Choose a page", ["Add Expense", "View Expenses", "Visualizations", "Budget & Alerts", "Bill Splitter", "AI Insights", "Export"])
 
-# Add sample data button
+
 if st.sidebar.button("Add Sample Data"):
     add_sample_data()
     st.sidebar.success("Sample data added!")
@@ -55,7 +55,7 @@ elif page == "View Expenses":
     st.header("View Expenses")
     expenses_df = get_expenses()
     if not expenses_df.empty:
-        # Filters
+     
         col1, col2, col3 = st.columns(3)
         with col1:
             category_filter = st.selectbox("Filter by Category", ["All"] + list(expenses_df['category'].unique()))
@@ -116,7 +116,7 @@ elif page == "Bill Splitter":
 
 elif page == "AI Insights":
     st.header("AI Insights")
-    # Debug info: show number of records and date range for this and last week
+  
     from datetime import timedelta
     today = datetime.now()
     this_week_start = today - timedelta(days=today.weekday())
@@ -147,3 +147,4 @@ elif page == "Export":
             st.success(f"Exported to {filename}.csv")
     else:
         st.write("No expenses to export.")
+
