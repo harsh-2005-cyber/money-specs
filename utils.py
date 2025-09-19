@@ -27,7 +27,7 @@ def split_bill(total_amount, num_people, payer_name="You"):
 def generate_ai_insights():
     """Generate simple AI insights based on spending patterns."""
     insights = []
-    # Compare this week vs last week
+ 
     today = datetime.now()
     this_week_start = today - timedelta(days=today.weekday())
     last_week_start = this_week_start - timedelta(days=7)
@@ -36,11 +36,10 @@ def generate_ai_insights():
     this_week_expenses = get_expenses(start_date=this_week_start.strftime('%Y-%m-%d'), end_date=today.strftime('%Y-%m-%d'))
     last_week_expenses = get_expenses(start_date=last_week_start.strftime('%Y-%m-%d'), end_date=last_week_end.strftime('%Y-%m-%d'))
 
-    # Ensure DataFrames are not empty and have required columns
+
     if this_week_expenses is None or last_week_expenses is None:
         return ["No expense data available for insights."]
 
-    # Convert 'date' to datetime if present
     for df in [this_week_expenses, last_week_expenses]:
         if 'date' in df.columns:
             try:
@@ -48,7 +47,7 @@ def generate_ai_insights():
             except Exception:
                 pass
 
-    # Check for 'amount' column
+
     if 'amount' not in this_week_expenses.columns or 'amount' not in last_week_expenses.columns:
         return ["Expense data missing 'amount' column. Cannot generate insights."]
 
@@ -66,7 +65,7 @@ def generate_ai_insights():
     else:
         insights.append("No expenses recorded for this week or last week.")
 
-    # Category insights
+
     if 'category' in this_week_expenses.columns and not this_week_expenses.empty:
         category_totals = this_week_expenses.groupby('category')['amount'].sum()
         if not category_totals.empty:
@@ -97,3 +96,4 @@ def export_to_csv(expenses_df, filename):
     """Export filtered expenses to CSV."""
     expenses_df.to_csv(filename, index=False)
     return filename
+
