@@ -1,6 +1,6 @@
 # Smart Expense Manager
 
-A Streamlit-based web application to help users track, categorize, and analyze personal expenses efficiently. Built for the HackaTHONG hackathon, this project demonstrates practical use of data science, machine learning, and web development for real-world financial management.
+A Streamlit-based web application to help users track, categorize, and analyze personal expenses efficiently. Built for the Moneyspecs hackathon, this project demonstrates practical use of data science, machine learning, and web development for real-world financial management.
 
 ## Features
 - **Intelligent Expense Tracking:** Add expenses with auto-categorization (keyword + ML-based) or manual selection.
